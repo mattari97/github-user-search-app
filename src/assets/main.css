@@ -6,7 +6,15 @@
   outline: 2px dotted red;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
-  color: var(--color-text);
-  background-color: var(--color-background);
+  background-color: var(--clr-background);
+  color: var(--clr-text-100);
+  font-family: var(--ff-mono);
+  font-weight: var(--fw-normal);
+  font-size: var(--fs-base);
+  font-style: normal;
 }
