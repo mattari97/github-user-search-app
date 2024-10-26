@@ -1,16 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
 :root {
-  --clr-light-100: hsl(0 0% 95%);
-  --clr-dark-100: hsl(0 0% 5%);
+  /* Colors */
+  --clr-light-100: 0 0% 100%;
+  --clr-light-200: 0 0% 99%;
+  --clr-primary: 212 100% 50%;
+  --clr-primary--active: 212 100% 69%;
+  --clr-error: 0 92% 62%;
+  --clr-bluegray-100: 227 100% 98%;
+  --clr-bluegray-200: 217 20% 51%;
+  --clr-bluegray-300: 217 35% 45%;
+  --clr-bluegray-400: 222 41% 20%;
+  --clr-bluegray-500: 217 21% 21%;
+  --clr-bluegray-600: 220 40% 13%;
+
+  /* Typography */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: 1.625rem;
+
+  --lh-body: 1.5;
+  --lh-title: 1.2;
+  --lh-none: 1;
+
+  --fw-normal: 400;
+  --fw-bold: 700;
+
+  --ff-mono: 'Space Mono', monospace;
 }
 
 :root {
-  --color-background: var(--clr-white-100);
-  --color-text: var(--clr-dark-100);
+  --clr-background: hsl(var(--clr-bluegray-100));
+  --clr-surface: hsl(var(--clr-light-200));
+  --clr-text-100: hsl(var(--clr-bluegray-300));
+  --clr-text-200: hsl(var(--clr-bluegray-500));
+  --clr-theme-toggle: hsl(var(--clr-bluegray-300));
+  --clr-theme-toggle--hover: hsl(var(--clr-bluegray-500));
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--clr-dark-100);
-    --color-text: var(--clr-light-100);
+    --clr-background: hsl(var(--clr-bluegray-600));
+    --clr-surface: hsl(var(--clr-bluegray-400));
+    --clr-text-100: hsl(var(--clr-light-100));
+    --clr-text-200: hsl(var(--clr-light-100));
+    --clr-theme-toggle: hsl(var(--clr-light-100));
+    --clr-theme-toggle--hover: hsl(var(--clr-bluegray-300));
   }
 }
