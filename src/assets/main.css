@@ -1,0 +1,12 @@
+@import './theme.css';
+@import './reset.css';
+@import './utilities.css';
+
+*:focus-visible {
+  outline: 2px dotted red;
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-background);
+}

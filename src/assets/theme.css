@@ -1,0 +1,16 @@
+:root {
+  --clr-light-100: hsl(0 0% 95%);
+  --clr-dark-100: hsl(0 0% 5%);
+}
+
+:root {
+  --color-background: var(--clr-white-100);
+  --color-text: var(--clr-dark-100);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--clr-dark-100);
+    --color-text: var(--clr-light-100);
+  }
+}
