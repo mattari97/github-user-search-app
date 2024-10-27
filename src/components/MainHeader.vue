@@ -60,15 +60,34 @@ header {
   padding: 1rem 2rem;
 }
 
+h1 {
+  color: var(--clr-logo);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-none);
+  padding-block-end: 5px;
+}
+
 button {
   display: flex;
   align-items: center;
   gap: 1rem;
   cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  margin-inline-end: -0.5rem;
+  color: var(--clr-theme-toggle);
+  transition: color 200ms ease-out;
+}
+
+button:hover {
+  color: var(--clr-theme-toggle--hover);
 }
 
 span {
   display: block;
+  text-transform: uppercase;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
 }
 
 svg {

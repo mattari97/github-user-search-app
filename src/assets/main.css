@@ -3,7 +3,7 @@
 @import './utilities.css';
 
 *:focus-visible {
-  outline: 2px dotted red;
+  outline: 2px dotted hsl(var(--clr-primary));
 }
 
 html {
