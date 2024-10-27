@@ -1,17 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import MainHeader from '@/components/MainHeader.vue'
+</script>
 
 <template>
-  <header></header>
-
-  <main>
-    <h1>Github User Search App</h1>
-  </main>
+  <MainHeader />
 </template>
 
-<style scoped>
-main {
-  flex-grow: 1;
-  display: grid;
-  place-items: center;
-}
-</style>
+<style scoped></style>
