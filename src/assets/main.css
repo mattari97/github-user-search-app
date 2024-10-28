@@ -17,4 +17,17 @@ body {
   font-weight: var(--fw-normal);
   font-size: var(--fs-base);
   font-style: normal;
+  justify-content: center;
+}
+
+#app {
+  width: min(100%, 39rem);
+  margin-inline: auto;
+  padding: 2rem 1.5rem;
+}
+
+@media (min-width: 49rem) {
+  #app {
+    width: min(100%, 49rem);
+  }
 }
