@@ -27,8 +27,7 @@ body,
   flex-direction: column;
 }
 
-body,
-#app {
+body {
   flex-grow: 1;
   isolation: isolate;
 }
