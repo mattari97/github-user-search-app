@@ -33,7 +33,6 @@ onMounted(() => {
     : 'light';
 
   theme.value = preferedTheme;
-  localStorage.setItem('theme', preferedTheme);
   document.documentElement.dataset.theme = preferedTheme;
 });
 </script>
