@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { computed, ref, useTemplateRef, type ComputedRef, type Ref } from 'vue';
+import { toast } from 'vue3-toastify';
 import type { TSearchError } from '@/types';
-import { useToast } from 'vue-toast-notification';
 import SearchIcon from '@/components/icons/SearchIcon.vue';
 import getErrorMessage from '@/utils/getErrorMessage';
-
-const $toast = useToast();
 
 const searchError: Ref<TSearchError> = ref('');
 const username: Ref<string> = ref('');
@@ -35,7 +33,7 @@ const handleSearch = async () => {
     console.log(json);
     username.value = '';
   } catch (error) {
-    $toast.error(getErrorMessage(error));
+    toast.error(getErrorMessage(error));
   }
 };
 
