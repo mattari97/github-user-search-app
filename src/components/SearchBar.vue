@@ -3,8 +3,11 @@ import { computed, ref, useTemplateRef, type ComputedRef, type Ref } from 'vue';
 import { toast } from 'vue3-toastify';
 import type { TSearchError } from '@/types';
 import SearchIcon from '@/components/icons/SearchIcon.vue';
-import getErrorMessage from '@/utils/getErrorMessage';
+import { useGlobalStore } from '@/stores/global';
+import fetchApi from '@/utils/fetchApi';
+import { setLocalStorageData } from '@/utils/storage';
 
+const store = useGlobalStore();
 const searchError: Ref<TSearchError> = ref('');
 const username: Ref<string> = ref('');
 const inputRef = useTemplateRef('search-input');
@@ -14,27 +17,25 @@ const handleSearch = async () => {
     return;
   }
 
-  try {
-    const response = await fetch(
-      `https://api.github.com/users/${username.value}`,
-    );
+  store.setLoading(true);
+  const { data, error } = await fetchApi(username.value);
 
-    if (404 === response.status) {
-      searchError.value = 'No results';
-      inputRef.value?.focus();
-      return;
-    }
-
-    if (!response.ok) {
-      throw new Error('API error. Please try later');
-    }
-
-    const json = await response.json();
-    console.log(json);
-    username.value = '';
-  } catch (error) {
-    toast.error(getErrorMessage(error));
+  if (error) {
+    toast.error(error);
+    store.setLoading(false);
+    return;
   }
+
+  if (data) {
+    store.setData(data);
+    setLocalStorageData('username', username.value);
+    username.value = '';
+    return;
+  }
+
+  searchError.value = 'No results';
+  inputRef.value?.focus();
+  store.setLoading(false);
 };
 
 const clearError = () => {

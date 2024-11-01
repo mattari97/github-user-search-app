@@ -3,6 +3,7 @@ import { computed, onMounted, ref, type ComputedRef, type Ref } from 'vue';
 import type { TTheme, TThemeLabel } from '@/types';
 import MoonIcon from '@/components/icons/MoonIcon.vue';
 import SunIcon from '@/components/icons/SunIcon.vue';
+import { getLocalStorageData, setLocalStorageData } from '@/utils/storage';
 
 const theme: Ref<TTheme | undefined> = ref();
 const themeLabel: ComputedRef<TThemeLabel> = computed(() =>
@@ -11,13 +12,14 @@ const themeLabel: ComputedRef<TThemeLabel> = computed(() =>
 
 const toggleTheme = () => {
   theme.value = theme.value === 'light' ? 'dark' : 'light';
+  setLocalStorageData('theme', theme.value);
   localStorage.setItem('theme', theme.value);
   document.documentElement.dataset.theme = theme.value;
 };
 
 onMounted(() => {
   // Get from local storage
-  const storedTheme = localStorage.getItem('theme');
+  const storedTheme = getLocalStorageData('theme');
   const isValidTheme = 'light' === storedTheme || 'dark' === storedTheme;
   if (isValidTheme) {
     theme.value = storedTheme;
