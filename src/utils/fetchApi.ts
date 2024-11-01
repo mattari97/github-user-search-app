@@ -1,7 +1,8 @@
+import type { TGitHubAPIProfile } from '@/types';
 import getErrorMessage from './getErrorMessage';
 
 type ReturnType = {
-  data?: object;
+  data?: TGitHubAPIProfile;
   error?: string;
 };
 
@@ -14,13 +15,17 @@ const fetchApi = async (username: string): Promise<ReturnType> => {
     }
 
     if (!response.ok) {
-      throw new Error('API error. Please try later');
+      throw new Error(`API error: ${response.statusText}`);
     }
 
     const json = await response.json();
 
-    if ('object' !== typeof json) {
-      throw new Error('API error. Please try later');
+    if ('object' !== typeof json || null === json) {
+      throw new Error('API error: Response is not a valid object');
+    }
+
+    if (!isValidGitHubApiData(json)) {
+      throw new Error('API error: Unexpected data format received');
     }
 
     return { data: json };
@@ -30,3 +35,37 @@ const fetchApi = async (username: string): Promise<ReturnType> => {
 };
 
 export default fetchApi;
+
+export const gitHubApiExpectedKeys: (keyof TGitHubAPIProfile)[] = [
+  'avatar_url',
+  'bio',
+  'blog',
+  'company',
+  'created_at',
+  'followers',
+  'following',
+  'gravatar_id',
+  'html_url',
+  'location',
+  'login',
+  'name',
+  'public_repos',
+  'repos_url',
+  'twitter_username',
+  'url',
+];
+
+export const isValidGitHubApiData = (data: unknown): boolean => {
+  if ('object' !== typeof data || null === data) {
+    return false;
+  }
+
+  return gitHubApiExpectedKeys.every(key => key in data);
+};
+
+export const generateGitHubApiEmptyObject = (): TGitHubAPIProfile => {
+  return gitHubApiExpectedKeys.reduce((obj, key) => {
+    obj[key] = '';
+    return obj;
+  }, {} as TGitHubAPIProfile);
+};
