@@ -114,7 +114,7 @@ input:focus-visible {
 span {
   position: absolute;
   right: 0.5rem;
-  top: calc(100% + 2px);
+  bottom: calc(100% + 2px);
   color: hsl(var(--clr-error));
   font-size: var(--fs-sm);
 }
