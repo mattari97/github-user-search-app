@@ -23,16 +23,23 @@ body {
   font-size: var(--fs-base);
   font-style: normal;
   justify-content: center;
+  line-height: var(--lh-body);
 }
 
 #app {
   width: min(100%, 39rem);
   margin-inline: auto;
   padding: 2rem 1.5rem;
+
+  @media (min-width: 68rem) {
+    width: min(100%, 49rem);
+  }
 }
 
-@media (min-width: 49rem) {
-  #app {
-    width: min(100%, 49rem);
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
   }
 }

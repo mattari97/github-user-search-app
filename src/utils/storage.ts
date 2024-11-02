@@ -1,20 +1,12 @@
 import type { TLocalStorageKey } from '@/types';
 
-const getLocalStorageData = (key: TLocalStorageKey) => {
-  return localStorage.getItem(key);
+const getLocalStorageData = <T>(key: TLocalStorageKey, defaultValue: T) => {
+  const json = localStorage.getItem(key);
+  return null === json ? defaultValue : (JSON.parse(json) as T);
 };
 
-const setLocalStorageData = (key: TLocalStorageKey, data: unknown) => {
-  if ('undefined' === typeof data) {
-    return;
-  }
-
-  if ('object' === typeof data) {
-    localStorage.setItem(key, JSON.stringify(data));
-    return;
-  }
-
-  localStorage.setItem(key, String(data));
+const setLocalStorageData = <T>(key: TLocalStorageKey, data: T) => {
+  localStorage.setItem(key, JSON.stringify(data));
 };
 
 export { getLocalStorageData, setLocalStorageData };

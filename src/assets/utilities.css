@@ -9,3 +9,8 @@
   white-space: nowrap;
   border: 0;
 }
+
+.stringify {
+  white-space: pre-wrap;
+  font-family: monospace;
+}

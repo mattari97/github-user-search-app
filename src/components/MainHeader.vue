@@ -13,13 +13,12 @@ const themeLabel: ComputedRef<TThemeLabel> = computed(() =>
 const toggleTheme = () => {
   theme.value = theme.value === 'light' ? 'dark' : 'light';
   setLocalStorageData('theme', theme.value);
-  localStorage.setItem('theme', theme.value);
   document.documentElement.dataset.theme = theme.value;
 };
 
 onMounted(() => {
   // Get from local storage
-  const storedTheme = getLocalStorageData('theme');
+  const storedTheme = getLocalStorageData('theme', null);
   const isValidTheme = 'light' === storedTheme || 'dark' === storedTheme;
   if (isValidTheme) {
     theme.value = storedTheme;
