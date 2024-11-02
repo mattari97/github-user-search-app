@@ -1,5 +1,6 @@
 import type { TGitHubAPIProfile } from '@/types';
 import getErrorMessage from './getErrorMessage';
+import formatDate from './formatDate';
 
 type ReturnType = {
   data?: TGitHubAPIProfile;
@@ -19,16 +20,13 @@ const fetchApi = async (username: string): Promise<ReturnType> => {
     }
 
     const json = await response.json();
+    const data = formatGitHubApiData(json);
 
-    if ('object' !== typeof json || null === json) {
-      throw new Error('API error: Response is not a valid object');
-    }
-
-    if (!isValidGitHubApiData(json)) {
+    if (!data) {
       throw new Error('API error: Unexpected data format received');
     }
 
-    return { data: json };
+    return { data };
   } catch (error) {
     return { error: getErrorMessage(error) };
   }
@@ -36,7 +34,7 @@ const fetchApi = async (username: string): Promise<ReturnType> => {
 
 export default fetchApi;
 
-export const gitHubApiExpectedKeys: (keyof TGitHubAPIProfile)[] = [
+export const GITHUB_API_EXPECTED_KEYS: (keyof TGitHubAPIProfile)[] = [
   'avatar_url',
   'bio',
   'blog',
@@ -55,16 +53,41 @@ export const gitHubApiExpectedKeys: (keyof TGitHubAPIProfile)[] = [
   'url',
 ];
 
+export const GITHUB_API_DEFAULT_VALUES = {
+  bio: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur recusandae sapiente dignissimos modi.',
+  links: 'Not Available',
+};
+
 export const isValidGitHubApiData = (data: unknown): boolean => {
   if ('object' !== typeof data || null === data) {
     return false;
   }
 
-  return gitHubApiExpectedKeys.every(key => key in data);
+  return GITHUB_API_EXPECTED_KEYS.every(key => key in data);
+};
+
+export const formatGitHubApiData = (
+  data: Record<string, string | null>,
+): TGitHubAPIProfile | null => {
+  if (!isValidGitHubApiData(data)) {
+    return null;
+  }
+
+  for (const key in data) {
+    if (data[key] === null) {
+      data[key] = '';
+    }
+
+    if ('created_at' === key) {
+      data[key] = formatDate(data[key]);
+    }
+  }
+
+  return data as TGitHubAPIProfile;
 };
 
 export const generateGitHubApiEmptyObject = (): TGitHubAPIProfile => {
-  return gitHubApiExpectedKeys.reduce((obj, key) => {
+  return GITHUB_API_EXPECTED_KEYS.reduce((obj, key) => {
     obj[key] = '';
     return obj;
   }, {} as TGitHubAPIProfile);

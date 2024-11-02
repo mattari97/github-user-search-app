@@ -7,6 +7,7 @@ const toastDefaultOptions: ToastContainerOptions = {
   closeOnClick: true,
   position: 'bottom-center',
   theme: 'colored',
+  transition: 'zoom',
 };
 
 export default toastDefaultOptions;

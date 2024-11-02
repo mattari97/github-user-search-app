@@ -4,7 +4,7 @@ import { toast } from 'vue3-toastify';
 import type { TSearchError } from '@/types';
 import SearchIcon from '@/components/icons/SearchIcon.vue';
 import { useGlobalStore } from '@/stores/global';
-import fetchApi from '@/utils/fetchApi';
+import fetchApi from '@/utils/fetchGitHubApi';
 import { setLocalStorageData } from '@/utils/storage';
 
 const store = useGlobalStore();
@@ -131,7 +131,7 @@ button {
 }
 
 button[aria-disabled='true'] {
-  background-color: hsl(var(--clr-primary) / 0.75);
+  background-color: hsl(var(--clr-primary) / 0.5);
   cursor: not-allowed;
 }
 </style>
