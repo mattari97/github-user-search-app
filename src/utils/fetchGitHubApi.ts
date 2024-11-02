@@ -48,7 +48,6 @@ export const GITHUB_API_EXPECTED_KEYS: (keyof TGitHubAPIProfile)[] = [
   'login',
   'name',
   'public_repos',
-  'repos_url',
   'twitter_username',
   'url',
 ];
