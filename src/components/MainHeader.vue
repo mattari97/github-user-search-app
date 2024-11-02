@@ -39,9 +39,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <header>
-    <h1>devfinder</h1>
+  <header class="header-container">
+    <h1 class="header-container__title">devfinder</h1>
     <button
+      class="header-container__toggle"
       @click="toggleTheme"
       :aria-label="`Switch to ${themeLabel.toLowerCase()} mode`"
     >
@@ -52,44 +53,44 @@ onMounted(() => {
   </header>
 </template>
 
-<style scoped>
-header {
+<style scoped lang="scss">
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
 
-h1 {
-  color: var(--clr-logo);
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-bold);
-  line-height: var(--lh-none);
-  padding-block-end: 5px;
-}
+  &__title {
+    color: var(--clr-logo);
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-none);
+    padding-block-end: 5px;
+  }
 
-button {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  margin-inline-end: -0.5rem;
-  color: var(--clr-theme-toggle);
-  transition: color 200ms ease-out;
-}
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    margin-inline-end: -0.5rem;
+    color: var(--clr-theme-toggle);
+    transition: color 200ms ease-out;
 
-button:hover {
-  color: var(--clr-theme-toggle--hover);
-}
+    &:hover {
+      color: var(--clr-theme-toggle--hover);
+    }
 
-span {
-  display: block;
-  text-transform: uppercase;
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-sm);
-}
+    & > span {
+      display: block;
+      text-transform: uppercase;
+      font-weight: var(--fw-bold);
+      font-size: var(--fs-sm);
+    }
 
-svg {
-  width: 20px;
+    & > svg {
+      width: 20px;
+    }
+  }
 }
 </style>

@@ -30,6 +30,10 @@
   --fw-bold: 700;
 
   --ff-mono: 'Space Mono', monospace;
+
+  /* Other */
+  --animation-duration: 250ms;
+  --box-shadow: hsl(227 46% 50% / 0.2) 0px 2px 8px;
 }
 
 :root[data-theme='light'] {

@@ -133,6 +133,7 @@ onMounted(async () => {
   margin-block-start: 1rem;
   padding: 2rem 1.5rem;
   background-color: var(--clr-surface);
+  box-shadow: var(--box-shadow);
   border-radius: 1rem;
 
   @media (min-width: 39rem) {
@@ -240,6 +241,7 @@ onMounted(async () => {
     & > span:last-of-type {
       font-size: var(--fs-base);
       font-weight: var(--fw-bold);
+      color: var(--clr-text-200);
     }
   }
 
@@ -247,7 +249,7 @@ onMounted(async () => {
     padding: 1rem 2rem;
 
     &__group {
-      flex-basis: 33%;
+      flex: 1;
       justify-items: start;
 
       & > span:first-of-type {
