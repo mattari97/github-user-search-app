@@ -105,6 +105,7 @@ onMounted(async () => {
         @click="copyTwitterUsername(store.data.twitter_username)"
         :data-available="!!store.data.twitter_username"
         :aria-disabled="!store.data.twitter_username"
+        :tabindex="!store.data.twitter_username ? -1 : 0"
       >
         <TwitterIcon class="profile-meta__icon" />
         {{ store.data.twitter_username || GITHUB_API_DEFAULT_VALUES.links }}

@@ -30,6 +30,7 @@ const handleSearch = async () => {
     store.setData(data);
     setLocalStorageData('username', username.value);
     username.value = '';
+    inputRef.value?.focus();
     return;
   }
 
@@ -49,7 +50,7 @@ const clearError = () => {
 
 <template>
   <section class="search">
-    <div class="search__group">
+    <div class="search__group" :data-error="searchError">
       <SearchIcon />
       <input
         v-model.trim="username"
@@ -60,7 +61,6 @@ const clearError = () => {
         placeholder="Search username..."
       />
     </div>
-    <span class="search__error" v-if="searchError">{{ searchError }}</span>
     <button
       class="search__submit"
       @click="handleSearch"
@@ -82,11 +82,31 @@ const clearError = () => {
   box-shadow: var(--box-shadow);
 
   &__group {
+    position: relative;
     flex: 1;
     display: flex;
     border-radius: 0.5rem;
     margin-inline-start: 0.5rem;
     padding-inline-start: 0.5rem;
+
+    &::before {
+      content: attr(data-error);
+      position: absolute;
+      left: 0;
+      bottom: calc(100% + 1rem);
+      line-height: var(--lh-none);
+      color: hsl(var(--clr-error));
+      font-size: var(--fs-sm);
+    }
+
+    @media (min-width: 39rem) {
+      &::before {
+        inset: unset;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
 
     &:focus-within {
       outline: 2px solid hsl(var(--clr-primary));
@@ -103,7 +123,6 @@ const clearError = () => {
     }
 
     & > input {
-      flex: 1;
       min-width: 0;
       margin-inline: 0.5rem;
       padding-block: 0.75rem;
@@ -124,14 +143,6 @@ const clearError = () => {
         font-size: var(--fs-base);
       }
     }
-  }
-
-  &__error {
-    position: absolute;
-    right: 0.5rem;
-    bottom: calc(100% + 2px);
-    color: hsl(var(--clr-error));
-    font-size: var(--fs-sm);
   }
 
   &__submit {
