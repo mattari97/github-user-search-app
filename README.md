@@ -33,11 +33,13 @@ Users should be able to:
 
 ### Screenshot
 
-![GitHub User Search App | Desktop version](./fullpage-desktop.png)
+![GitHub User Search App (Dark) | Desktop version](./screenshots/desktop-dark.png)
 
-![GitHub User Search App | Tablet version](./fullpage-tablet.png)
+![GitHub User Search App (Light) | Desktop version](./screenshots/desktop-light.png)
 
-![GitHub User Search App | Mobile version](./fullpage-mobile.png)
+![GitHub User Search App | Tablet version](./screenshots/tablet.png)
+
+![GitHub User Search App | Mobile version](./screenshots/mobile.png)
 
 ### Links
 
