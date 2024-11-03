@@ -6,6 +6,8 @@ import DisplayContainer from './components/DisplayContainer.vue';
 
 <template>
   <MainHeader />
-  <SearchBar />
-  <DisplayContainer />
+  <main>
+    <SearchBar />
+    <DisplayContainer />
+  </main>
 </template>

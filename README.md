@@ -43,7 +43,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Go to solution](https://www.frontendmentor.io/solutions/rock-paper-scissors-lizard-spock-sveltekit-tailwind-typescript-H9YeK1xThg)
+- Solution URL: [Go to solution](https://www.frontendmentor.io/solutions/github-user-search-app-vue3---typescript---scss-63J0Il57ZL)
 - Live Site URL: [Go to live site](https://github-user-search-app-acdev.vercel.app/)
 
 ## My process

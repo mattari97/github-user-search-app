@@ -49,7 +49,7 @@ const clearError = () => {
 </script>
 
 <template>
-  <section class="search">
+  <div class="search">
     <div class="search__group" :data-error="searchError">
       <SearchIcon />
       <input
@@ -68,7 +68,7 @@ const clearError = () => {
     >
       Search
     </button>
-  </section>
+  </div>
 </template>
 
 <style scoped lang="scss">
