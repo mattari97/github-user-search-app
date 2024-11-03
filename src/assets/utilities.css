@@ -14,3 +14,34 @@
   white-space: pre-wrap;
   font-family: monospace;
 }
+
+@keyframes growFromCenter {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.grow-center {
+  --duration: var(--gc-duration, 500ms);
+  transform-origin: center;
+  animation: growFromCenter var(--duration) ease-in forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  --duration: var(--fi-duration, 500ms);
+  --delay: calc(var(--fi-queue, 1) * 100ms + (var(--duration) / 2));
+  opacity: 0;
+  animation: fadeIn var(--duration) var(--delay) ease-in forwards;
+}

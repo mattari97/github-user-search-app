@@ -50,11 +50,11 @@ onMounted(async () => {
 <template>
   <section class="profile-container">
     <img
-      class="profile-avatar"
+      class="profile-avatar grow-center"
       :src="store.data.avatar_url"
       :alt="`Avatar of ${store.data.login}`"
     />
-    <div class="profile-header">
+    <div class="profile-header fade-in" style="--fi-queue: 0">
       <h2 class="profile-header__name">{{ store.data.name }}</h2>
       <a
         class="profile-header__login"
@@ -67,10 +67,10 @@ onMounted(async () => {
         >Joined {{ store.data.created_at }}</span
       >
     </div>
-    <p class="profile-bio">
+    <p class="profile-bio fade-in" style="--fi-queue: 1">
       {{ store.data.bio || GITHUB_API_DEFAULT_VALUES.bio }}
     </p>
-    <div class="profile-stats">
+    <div class="profile-stats fade-in" style="--fi-queue: 2">
       <div class="profile-stats__group">
         <span>Repos</span>
         <span>{{ store.data.public_repos }}</span>
@@ -84,7 +84,7 @@ onMounted(async () => {
         <span>{{ store.data.following }}</span>
       </div>
     </div>
-    <div class="profile-meta">
+    <div class="profile-meta fade-in" style="--fi-queue: 3">
       <span
         class="profile-meta__location"
         :data-available="!!store.data.location"
