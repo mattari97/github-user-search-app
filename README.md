@@ -20,16 +20,17 @@ This is a solution to the [GitHub user search app challenge on Frontend Mentor](
 
 Users should be able to:
 
-Users should be able to:
-
 - View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Search for GitHub users by their username
 - See relevant user information based on their search
 - Switch between light and dark themes
-- **Bonus**: Have the correct color scheme chosen for them based on their computer preferences.
-- **Bonus**: Store the last searched username and selected theme in localStorage.
-- **Bonus**: Copy the twitter username in the clipboard.
+
+Bonus :
+
+- Have the correct color scheme chosen for them based on their computer preferences.
+- Store the last searched username and selected theme in localStorage.
+- Copy the twitter username in the clipboard.
 
 ### Screenshot
 
